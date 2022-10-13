@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
@@ -16,6 +16,14 @@ function App() {
       setLocation('')
     }
   }
+const focus = () => {
+  const search = document.querySelector('input');
+  return search.focus()
+}
+
+  useEffect(()=>{
+   focus()
+  }, [])
 
   return (
     <div className="app">
