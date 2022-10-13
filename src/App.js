@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
 function App() {
@@ -16,19 +16,21 @@ function App() {
       setLocation('')
     }
   }
-const focus = () => {
-  const search = document.querySelector('input');
-  return search.focus()
+const inputRef = useRef(null)
+
+const inputFocus = () => {
+  inputRef.current.focus()
 }
 
   useEffect(()=>{
-   focus()
+   inputFocus()
   }, [])
 
   return (
     <div className="app">
       <div className="search">
         <input
+          ref={inputRef}
           value={location}
           onChange={event => setLocation(event.target.value)}
           onKeyPress={searchLocation}
